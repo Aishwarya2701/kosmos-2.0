@@ -1,4 +1,4 @@
-# FLIPVERSE
+# KOSMOS
 
 ## To setup the project on your local machine
 
@@ -8,10 +8,10 @@ Navigate to the folder\
 `cd `
 
 Install dependencies\
-`yarn install`
+`yarn install` or `npm install`
 
 Run the project\
-`yarn start`
+`yarn start` or `npm start`
 
 On any browser open\
 `localhost:2002`
