@@ -7,7 +7,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 2002;
 
 // Serve static files
-app.use(express.static(__dirname + '/client'));
+app.use(express.static(__dirname + "/client"));
 app.use(express.static("./client/libs"));
 app.use(express.static("./client/v3"));
 
@@ -43,15 +43,9 @@ app.get("/Almirah", function (req, res) {
 // Socket.io connection handler
 io.sockets.on("connection", function (socket) {
   // Handle socket.io events
-  // Your socket logic here...
 });
 
-// Listening on PORT (Not needed for Vercel serverless, but kept for local dev purposes)
-http.listen(PORT, function () {
-  console.log("listening on *:2002");
-});
-
-// This setInterval logic is fine as long as it's needed for your real-time data updates
+// Interval logic
 setInterval(function () {
   const nsp = io.of("/");
   let pack = [];
@@ -75,5 +69,5 @@ setInterval(function () {
   if (pack.length > 0) io.emit("remoteData", pack);
 }, 40);
 
-// Export the app to be used by Vercel's serverless functions
-module.exports = app;
+// Export the http server instance for Vercel
+module.exports = http;
